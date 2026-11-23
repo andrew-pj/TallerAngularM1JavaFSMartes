@@ -1,12 +1,45 @@
 <section class="listado">
-    <h2 class="listado__titulo">Listado de mascotas</h2>
-    <p class="listado__total" data-testid="total-mascotas">{{ mascotas.length }} mascotas en listado</p>
-  
+  <h2 class="listado__titulo">Listado de mascotas</h2>
+
+  <div class="filtros">
+    <input
+      class="filtros__buscador"
+      type="search"
+      data-testid="buscador"
+      placeholder="Buscar por nombre"
+      [value]="busqueda()"
+      (input)="alBuscar($event)"
+    />
+    <label class="filtros__casilla">
+      <input
+        type="checkbox"
+        data-testid="solo-disponibles"
+        [checked]="soloDisponibles()"
+        (change)="alCambiarDisponibles($event)"
+      />
+      Solo disponibles
+    </label>
+  </div>
+
+  @if (cargando()) {
+    <p data-testid="cargando">Cargando mascotas…</p>
+  } @else if (error()) {
+    <p class="mensaje mensaje--error" data-testid="mensaje-error">{{ error() }}</p>
+  } @else {
+    <p class="listado__total" data-testid="total-mascotas">
+      {{ mascotasFiltradas().length }} mascotas en listado
+    </p>
+
     <div class="listado__grilla">
-      @for (mascota of mascotas; track mascota.id) {
-        <app-tarjeta-mascota [mascota]="mascota" />
+      @for (mascota of mascotasFiltradas(); track mascota.id) {
+        <app-tarjeta-mascota
+          [mascota]="mascota"
+          [esFavorita]="favoritos.esFavorita(mascota.id)"
+          (favoritoAlternado)="alternarFavorito($event)"
+        />
       } @empty {
-        <p class="listado__vacio" data-testid="sin-mascotas">No hay mascotas en listado por ahora.</p>
+        <p class="listado__vacio" data-testid="sin-mascotas">No hay mascotas con esos filtros.</p>
       }
     </div>
-  </section>
+  }
+</section>

@@ -1,0 +1,21 @@
+<section class="listado">
+  <h2 class="listado__titulo">Mi lista</h2>
+
+  @if (cargando()) {
+    <p data-testid="cargando">Cargando tus favoritas…</p>
+  } @else if (error()) {
+    <p class="mensaje mensaje--error" data-testid="mensaje-error">{{ error() }}</p>
+  } @else if (favoritas().length === 0) {
+    <p class="listado__vacio" data-testid="lista-vacia">Todavía no guardaste ninguna mascota.</p>
+  } @else {
+    <div class="listado__grilla">
+      @for (mascota of favoritas(); track mascota.id) {
+        <app-tarjeta-mascota
+          [mascota]="mascota"
+          [esFavorita]="true"
+          (favoritoAlternado)="alternarFavorito($event)"
+        />
+      }
+    </div>
+  }
+</section>

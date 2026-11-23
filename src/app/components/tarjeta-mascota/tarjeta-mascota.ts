@@ -1,4 +1,4 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, input, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Mascota } from '../../models/mascota';
 import { Etiqueta } from '../../shared/etiqueta/etiqueta';
@@ -11,6 +11,8 @@ import { Etiqueta } from '../../shared/etiqueta/etiqueta';
 })
 export class TarjetaMascota {
   mascota = input.required<Mascota>();
+  esFavorita = input(false);
+  favoritoAlternado = output<number>();
   mostrarDescripcion = false;
 
   estaAdoptada = computed(() => this.mascota().adoptada);
@@ -30,5 +32,9 @@ export class TarjetaMascota {
 
   verMas() {
     this.mostrarDescripcion = !this.mostrarDescripcion;
+  }
+
+  alternarFavorito() {
+    this.favoritoAlternado.emit(this.mascota().id);
   }
 }

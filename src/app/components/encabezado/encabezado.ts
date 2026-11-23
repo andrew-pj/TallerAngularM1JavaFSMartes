@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { FavoritosStore } from '../../services/favoritos-store';
 
 @Component({
   imports: [RouterLink, RouterLinkActive],
@@ -8,6 +9,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   templateUrl: './encabezado.html',
 })
 export class Encabezado {
+  readonly favoritos = inject(FavoritosStore);
+
   nombreApp = 'Huella Amiga';
-  eslogan = 'Adopta una mascota';
+  eslogan = 'Adopta una mascota y dale color a su vida y alegria a la tuya';
 }

@@ -4,5 +4,6 @@
   <nav class="encabezado__nav">
     <a routerLink="/" routerLinkActive="activo" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
     <a routerLink="/mascotas" routerLinkActive="activo">Mascotas</a>
+    <a routerLink="/mi-lista" routerLinkActive="activo">Mi lista <span class="encabezado__contador" data-testid="contador-favoritas">{{ favoritos.total() }}</span></a>
   </nav>
 </header>

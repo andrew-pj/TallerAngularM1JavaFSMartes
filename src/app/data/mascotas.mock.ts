@@ -49,4 +49,20 @@ export const MASCOTAS: Mascota[] = [
         descripcion: 'Rocky es un gato jugueton',
         adoptada: false,
     },
+    {
+        id: 7,
+        nombre: 'Nube',
+        especie: 'gato',
+        edadMeses: 36,
+        descripcion: 'Nube es una gata tranquila que ya encontró hogar.',
+        adoptada: true,
+    },
+    {
+        id: 8,
+        nombre: 'Tito',
+        especie: 'perro',
+        edadMeses: 9,
+        descripcion: 'Tito es un cachorro muy curioso que ya fue adoptado.',
+        adoptada: true,
+    },
 ];

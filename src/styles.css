@@ -1,8 +1,8 @@
 /* Kit de estilos de Huella Amiga · viene listo: no necesitas escribir CSS */
 :root {
-  --color-principal: #5418cc;
-  --color-vibrante: #6018f0;
-  --color-oscuro: #3c1884;
+  --color-principal: #2710d8;
+  --color-vibrante: #651bee;
+  --color-oscuro: #532696;
   --color-texto: #1a1a1a;
   --color-suave: #f5f3fb;
   --color-exito: #166534;
@@ -79,3 +79,9 @@ body {
 .aviso { background: #fff; border-radius: var(--radio); padding: 32px 24px; max-width: 520px; margin: 0 auto; text-align: center; }
 .aviso .boton { display: inline-block; flex: none; text-decoration: none; padding: 10px 22px; }
 .aviso__codigo { margin: 0; font-size: 3rem; font-weight: 800; color: var(--color-principal); }
+
+/* ── Fase 3 · Buscador, casilla y contador ── */
+.filtros { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 12px 0; }
+.filtros__buscador { flex: 1; min-width: 200px; padding: 10px 14px; border: 1px solid #d8d2ea; border-radius: 10px; font: inherit; }
+.filtros__casilla { display: flex; align-items: center; gap: 6px; }
+.encabezado__contador { display: inline-block; min-width: 22px; margin-left: 4px; padding: 0 6px; border-radius: 999px; background: #fff; color: var(--color-principal); font-weight: 700; text-align: center; }

@@ -1,12 +1,22 @@
 <section class="portada">
-    <h2 class="portada__titulo">Adopta una mascota</h2>
-    <p class="portada__texto">Conoce a nuestras mascotas disponibles para adopción</p>
-    <a class="boton portada__boton" routerLink="/mascotas" data-testid="ir-a-mascotas">Ver todas las mascotas</a>
-  </section>
-  
+  <h2 class="portada__titulo">Adopta una mascota</h2>
+  <p class="portada__texto">Conoce a nuestras mascotas disponibles para adopción</p>
+  <a class="boton portada__boton" routerLink="/mascotas" data-testid="ir-a-mascotas">Ver todas las mascotas</a>
+</section>
+
+@if (cargando()) {
+  <p data-testid="cargando">Cargando mascotas…</p>
+} @else if (error()) {
+  <p class="mensaje mensaje--error" data-testid="mensaje-error">{{ error() }}</p>
+} @else {
   <h2 class="listado__titulo">Mascotas disponibles</h2>
   <div class="listado__grilla">
-    @for (mascota of destacados; track mascota.id) {
-      <app-tarjeta-mascota [mascota]="mascota" />
+    @for (mascota of destacados(); track mascota.id) {
+      <app-tarjeta-mascota
+        [mascota]="mascota"
+        [esFavorita]="favoritos.esFavorita(mascota.id)"
+        (favoritoAlternado)="alternarFavorito($event)"
+      />
     }
   </div>
+}
